@@ -18,6 +18,7 @@ function init(){
 	console.log("init");
 	c = document.getElementById("canvas");
 	g = c.getContext("2d");
+	g.font = "30px Consolas";
 	width = c.width;
 	height = c.height;
 	x = width/3;
@@ -65,7 +66,13 @@ function draw(){
 	g.fillStyle="green";
 	g.fill();
 	g.closePath();
-			
+	
+	g.fillStyle="black";
+	g.fillText("P="+kP*4, 10,30);
+	g.fillText("I="+kI, 10,60);
+	g.fillText("D="+kD, 10,90);
+	g.fillText("θ="+Math.trunc(angle*(180/Math.PI)), 10,130);
+	g.fillText("ω="+Math.trunc(vel*(180/Math.PI)*10), 10,160);
 }
 var controller = new PID(1,0,0);
 controller.setSampleTime(50);
