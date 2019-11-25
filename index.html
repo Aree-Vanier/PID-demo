@@ -1,0 +1,54 @@
+<head>
+	<title>PID Controller</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+	<script src="./pid.js"></script>
+	<script src="./script.js"></script>	
+	<script src="./plot.js"></script>
+	<script src="./physics.js"></script>
+</head>
+
+<body  style="overflow:hidden">
+	<h1>PID Controller</h1>
+	<table style="border-collapse:collapse">
+	<tr>
+	<td/>
+	<canvas id="canvas" width="720px" height="480	px" style="border:1px solid black">
+	</canvas>
+	</td>
+	<td>
+	
+	<canvas id="position" width="780px" height="240px" style="border:1px solid black">
+	</canvas>
+	<canvas id="output" width="780px" height="240px" style="border:1px solid black">
+	</canvas>
+	</td>
+	
+	</tr>
+	<tr>
+	<td style = "border:2px solid black">
+		<h3>Controls</h3>
+		<label> Target <input type="number" id="target" value="0"/> <button onclick="setTarget()">Go</button><button onclick="rst()">Reset</button></label> <br/>
+		<label> History <input type="number" id="history" value="250" min="50"/></label><br/>
+		<!--<label> Mass <input type="range" id="mass" value="65" min="50" max="100"/></label><br/>-->
+		<label> Speed <input type="range" id="time" value="9" min="0" max="10" oninput="setTime()"/></label><br/>
+
+	</td>
+	<td style = "border:2px solid black">
+		<label> kP <input type="number" id="kP" value="1"/></label><br/>
+		<label> kI <input type="number" id="kI" value="0"/></label><br/>
+		<label> kD <input type="number" id="kD" value="0"/></label><br/>
+		<button onclick = "setPID()">Go</button>
+	</td>
+	</tr>
+	</table>
+	
+	<script>
+		document.getElementById("target").addEventListener("keyup", function(event) {
+		  // Number 13 is the "Enter" key on the keyboard
+		  if (event.keyCode === 13) {
+			setTarget();
+		  }
+		});
+	</script>
+	
+</body>
